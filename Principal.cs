@@ -47,7 +47,7 @@ namespace WindowsFormsApp1
             //Conexion de bdd en todo el form
             // Conectarse c = new Conectarse(cUser,cPassword);
             //Si el usuario no es admin, no podrá ver esto
-
+            ocultar();
 
             conexionABDD = $"Data Source=DESKTOP-PPMBHAK\\SQLEXPRESS;Initial Catalog=proyectoFinaltbdd;User ID={cUser};Password={cPassword};";
 
@@ -182,7 +182,7 @@ namespace WindowsFormsApp1
                     dataJuegos.Size = new Size(707, 445);
                     break;
                 case 4:
-                 //   rvReporte.Visible = true;
+
                     break;
 
             }
@@ -215,7 +215,7 @@ namespace WindowsFormsApp1
             btnBackup.Visible = false;
 
             //Reporte
-         //   rvReporte.Visible = false;
+           //rvReporte.Visible = false;
 
         }
         int botonElegido;
@@ -358,7 +358,7 @@ namespace WindowsFormsApp1
                         costoJuego = Convert.ToDouble(resultados[2]);
                         string idjuego = resultados[0].ToString();
                         string iduser = resultados[3].ToString();
-                        MessageBox.Show($"{dineroUser} {costoJuego}");
+                      //  MessageBox.Show($"{dineroUser} {costoJuego}");
 
                         if (dineroUser < costoJuego)
                         {
@@ -425,7 +425,7 @@ namespace WindowsFormsApp1
                     break;
                 case 2:
                     string consulta="";
-                    //Aqui va el de añadir
+
                     if (rbAdd.Checked)
                     {
                          consulta = "exec proyecto.proce_BaseTienda " +

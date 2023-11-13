@@ -71,7 +71,7 @@ namespace WindowsFormsApp1
 
                 catch (Exception ex)
                 {
-                  //  MessageBox.Show("Error de inicio de sesión: " + ex.Message);
+                    MessageBox.Show("Error de inicio de sesión: " + ex.Message);
                 }
 
             }

@@ -53,8 +53,6 @@ namespace WindowsFormsApp1
             {
 
 
-                //AQUI PROBAR CON HACER EL USER EN OTRA CONSULTA, O SEA, EJECUTAR EL USING COPYPASTE POR SEGUNDA VEZ A VER SI FUNCIONA
-
                 string[] consultas = new string[3];
                 consultas[0] = "use ProyectoFinalTBDD";
                 consultas[1] = $"CREATE LOGIN {user} WITH PASSWORD = '{pass}'";
