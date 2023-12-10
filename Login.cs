@@ -24,5 +24,20 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void bunifuLabel3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnIniciarSesion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
