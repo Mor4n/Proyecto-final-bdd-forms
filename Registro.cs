@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bunifu.UI.WinForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,7 +19,7 @@ namespace WindowsFormsApp1
         public Registro()
         {
             InitializeComponent();
-            
+
         }
 
         private void bunifuButton1_Click(object sender, EventArgs e)
@@ -29,15 +30,15 @@ namespace WindowsFormsApp1
             string codigo = txtAdmin.Text;
 
             string conexionABDDADMIN = "Data Source=DESKTOP-PPMBHAK\\SQLEXPRESS;Initial Catalog=master;User ID=sa;Password=;";
-            crearLogin(conexionABDDADMIN, user,pass,email,codigo);
+            crearLogin(conexionABDDADMIN, user, pass, email, codigo);
             //  crearUsuario(conexionABDDADMIN);
-
+            procedimientoUsuario(conexionABDDADMIN, user, email, codigo);
             this.Close();
-
+            
 
         }
 
-        public static void crearLogin(string con,string user, string pass, string email, string codigo)
+        public static void crearLogin(string con, string user, string pass, string email, string codigo)
         {
             //LOGIN
             //Añadir capa de seguridad
@@ -107,7 +108,7 @@ namespace WindowsFormsApp1
                             // Ejecutar la consulta
                             command.ExecuteNonQuery();
                             MessageBox.Show($"Creado exitosamente los permisos y el usuario{i}");
-                            
+
                         }
 
                     }
@@ -119,13 +120,70 @@ namespace WindowsFormsApp1
                 }
                 conexion.Close();
             }
-            
+
         }
+
+        public static void procedimientoUsuario(string con, string usuario, string email, string codigo)
+        {
+            int rol = 0;
+
+            using (SqlConnection conexion = new SqlConnection(con))
+            {
+                try
+                {
+                    conexion.Open();
+
+                    if (codigo == "administrador")
+                    {
+                        rol = 1;
+                    }
+                    string consulta = "use ProyectoFinalTBDD " +
+                                        "exec proyecto.proce_crearUser " +
+                                        $"@Nombre_Usuario = {usuario}, " +
+                                        $"@Email_Usuario = '{email}', " +
+                                        "@Dinero = 0, " +
+                                        $"@Rol = {rol};";
+
+                    using (SqlCommand command = new SqlCommand(consulta, conexion))
+                    {
+                        // Ejecutar la consulta
+                        command.ExecuteNonQuery();
+                        // MessageBox.Show($"Creado exitosamente {i}");
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+
+                conexion.Close();
+
+            }
+        }
+    
+
 
 
         private void bunifuGradientPanel1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+            pictureBox2.BringToFront();
+
+            txtPass.PasswordChar = '\0';
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+            pictureBox1.BringToFront();
+            txtPass.PasswordChar = '*';
         }
     }
 }

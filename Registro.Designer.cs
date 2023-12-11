@@ -29,6 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Registro));
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties9 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties10 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
@@ -38,15 +46,11 @@
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties14 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties15 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties16 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             this.bunifuGradientPanel1 = new Bunifu.UI.WinForms.BunifuGradientPanel();
+            this.bunifuLabel4 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.txtAdmin = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.txtEmail = new Bunifu.UI.WinForms.BunifuTextBox();
             this.bunifuButton1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.bunifuPictureBox1 = new Bunifu.UI.WinForms.BunifuPictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -54,12 +58,12 @@
             this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.txtPass = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtUser = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.txtEmail = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.bunifuLabel4 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.txtAdmin = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuPictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuGradientPanel1
@@ -68,6 +72,8 @@
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuGradientPanel1.BorderRadius = 1;
+            this.bunifuGradientPanel1.Controls.Add(this.pictureBox1);
+            this.bunifuGradientPanel1.Controls.Add(this.pictureBox2);
             this.bunifuGradientPanel1.Controls.Add(this.bunifuLabel4);
             this.bunifuGradientPanel1.Controls.Add(this.txtAdmin);
             this.bunifuGradientPanel1.Controls.Add(this.bunifuLabel3);
@@ -90,6 +96,190 @@
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(584, 657);
             this.bunifuGradientPanel1.TabIndex = 1;
             this.bunifuGradientPanel1.Click += new System.EventHandler(this.bunifuGradientPanel1_Click);
+            // 
+            // bunifuLabel4
+            // 
+            this.bunifuLabel4.AllowParentOverrides = false;
+            this.bunifuLabel4.AutoEllipsis = false;
+            this.bunifuLabel4.CursorType = null;
+            this.bunifuLabel4.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.bunifuLabel4.ForeColor = System.Drawing.Color.DarkBlue;
+            this.bunifuLabel4.Location = new System.Drawing.Point(423, 565);
+            this.bunifuLabel4.Name = "bunifuLabel4";
+            this.bunifuLabel4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel4.Size = new System.Drawing.Size(161, 17);
+            this.bunifuLabel4.TabIndex = 12;
+            this.bunifuLabel4.Text = "Si tiene código, ingréselo";
+            this.bunifuLabel4.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel4.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // txtAdmin
+            // 
+            this.txtAdmin.AcceptsReturn = false;
+            this.txtAdmin.AcceptsTab = false;
+            this.txtAdmin.AnimationSpeed = 200;
+            this.txtAdmin.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.txtAdmin.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.txtAdmin.AutoSizeHeight = true;
+            this.txtAdmin.BackColor = System.Drawing.Color.White;
+            this.txtAdmin.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("txtAdmin.BackgroundImage")));
+            this.txtAdmin.BorderColorActive = System.Drawing.Color.DodgerBlue;
+            this.txtAdmin.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.txtAdmin.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.txtAdmin.BorderColorIdle = System.Drawing.Color.SkyBlue;
+            this.txtAdmin.BorderRadius = 1;
+            this.txtAdmin.BorderThickness = 1;
+            this.txtAdmin.CharacterCase = Bunifu.UI.WinForms.BunifuTextBox.CharacterCases.Normal;
+            this.txtAdmin.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtAdmin.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtAdmin.DefaultFont = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.txtAdmin.DefaultText = "";
+            this.txtAdmin.FillColor = System.Drawing.Color.LightCyan;
+            this.txtAdmin.HideSelection = true;
+            this.txtAdmin.IconLeft = null;
+            this.txtAdmin.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtAdmin.IconPadding = 10;
+            this.txtAdmin.IconRight = null;
+            this.txtAdmin.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtAdmin.Lines = new string[0];
+            this.txtAdmin.Location = new System.Drawing.Point(461, 588);
+            this.txtAdmin.MaxLength = 32767;
+            this.txtAdmin.MinimumSize = new System.Drawing.Size(1, 1);
+            this.txtAdmin.Modified = false;
+            this.txtAdmin.Multiline = false;
+            this.txtAdmin.Name = "txtAdmin";
+            stateProperties1.BorderColor = System.Drawing.Color.Firebrick;
+            stateProperties1.FillColor = System.Drawing.Color.MintCream;
+            stateProperties1.ForeColor = System.Drawing.Color.Black;
+            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Gray;
+            this.txtAdmin.OnActiveState = stateProperties1;
+            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties2.FillColor = System.Drawing.Color.BlanchedAlmond;
+            stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtAdmin.OnDisabledState = stateProperties2;
+            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties3.FillColor = System.Drawing.Color.Empty;
+            stateProperties3.ForeColor = System.Drawing.Color.Empty;
+            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtAdmin.OnHoverState = stateProperties3;
+            stateProperties4.BorderColor = System.Drawing.Color.SkyBlue;
+            stateProperties4.FillColor = System.Drawing.Color.LightCyan;
+            stateProperties4.ForeColor = System.Drawing.Color.Empty;
+            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtAdmin.OnIdleState = stateProperties4;
+            this.txtAdmin.Padding = new System.Windows.Forms.Padding(3);
+            this.txtAdmin.PasswordChar = '\0';
+            this.txtAdmin.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtAdmin.PlaceholderText = "";
+            this.txtAdmin.ReadOnly = false;
+            this.txtAdmin.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtAdmin.SelectedText = "";
+            this.txtAdmin.SelectionLength = 0;
+            this.txtAdmin.SelectionStart = 0;
+            this.txtAdmin.ShortcutsEnabled = true;
+            this.txtAdmin.Size = new System.Drawing.Size(111, 39);
+            this.txtAdmin.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            this.txtAdmin.TabIndex = 11;
+            this.txtAdmin.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtAdmin.TextMarginBottom = 0;
+            this.txtAdmin.TextMarginLeft = 3;
+            this.txtAdmin.TextMarginTop = 1;
+            this.txtAdmin.TextPlaceholder = "";
+            this.txtAdmin.UseSystemPasswordChar = false;
+            this.txtAdmin.WordWrap = true;
+            // 
+            // bunifuLabel3
+            // 
+            this.bunifuLabel3.AllowParentOverrides = false;
+            this.bunifuLabel3.AutoEllipsis = false;
+            this.bunifuLabel3.CursorType = null;
+            this.bunifuLabel3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuLabel3.ForeColor = System.Drawing.Color.DarkBlue;
+            this.bunifuLabel3.Location = new System.Drawing.Point(211, 257);
+            this.bunifuLabel3.Name = "bunifuLabel3";
+            this.bunifuLabel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel3.Size = new System.Drawing.Size(144, 22);
+            this.bunifuLabel3.TabIndex = 10;
+            this.bunifuLabel3.Text = "Ingrese su email";
+            this.bunifuLabel3.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel3.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.AcceptsReturn = false;
+            this.txtEmail.AcceptsTab = false;
+            this.txtEmail.AnimationSpeed = 200;
+            this.txtEmail.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.txtEmail.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.txtEmail.AutoSizeHeight = true;
+            this.txtEmail.BackColor = System.Drawing.Color.White;
+            this.txtEmail.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("txtEmail.BackgroundImage")));
+            this.txtEmail.BorderColorActive = System.Drawing.Color.DodgerBlue;
+            this.txtEmail.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.txtEmail.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.txtEmail.BorderColorIdle = System.Drawing.Color.SkyBlue;
+            this.txtEmail.BorderRadius = 1;
+            this.txtEmail.BorderThickness = 1;
+            this.txtEmail.CharacterCase = Bunifu.UI.WinForms.BunifuTextBox.CharacterCases.Normal;
+            this.txtEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtEmail.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtEmail.DefaultFont = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.txtEmail.DefaultText = "";
+            this.txtEmail.FillColor = System.Drawing.Color.LightCyan;
+            this.txtEmail.HideSelection = true;
+            this.txtEmail.IconLeft = null;
+            this.txtEmail.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtEmail.IconPadding = 10;
+            this.txtEmail.IconRight = null;
+            this.txtEmail.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtEmail.Lines = new string[0];
+            this.txtEmail.Location = new System.Drawing.Point(163, 296);
+            this.txtEmail.MaxLength = 32767;
+            this.txtEmail.MinimumSize = new System.Drawing.Size(1, 1);
+            this.txtEmail.Modified = false;
+            this.txtEmail.Multiline = false;
+            this.txtEmail.Name = "txtEmail";
+            stateProperties5.BorderColor = System.Drawing.Color.Firebrick;
+            stateProperties5.FillColor = System.Drawing.Color.MintCream;
+            stateProperties5.ForeColor = System.Drawing.Color.Black;
+            stateProperties5.PlaceholderForeColor = System.Drawing.Color.Gray;
+            this.txtEmail.OnActiveState = stateProperties5;
+            stateProperties6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties6.FillColor = System.Drawing.Color.BlanchedAlmond;
+            stateProperties6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties6.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtEmail.OnDisabledState = stateProperties6;
+            stateProperties7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties7.FillColor = System.Drawing.Color.Empty;
+            stateProperties7.ForeColor = System.Drawing.Color.Empty;
+            stateProperties7.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtEmail.OnHoverState = stateProperties7;
+            stateProperties8.BorderColor = System.Drawing.Color.SkyBlue;
+            stateProperties8.FillColor = System.Drawing.Color.LightCyan;
+            stateProperties8.ForeColor = System.Drawing.Color.Empty;
+            stateProperties8.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtEmail.OnIdleState = stateProperties8;
+            this.txtEmail.Padding = new System.Windows.Forms.Padding(3);
+            this.txtEmail.PasswordChar = '\0';
+            this.txtEmail.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtEmail.PlaceholderText = "";
+            this.txtEmail.ReadOnly = false;
+            this.txtEmail.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtEmail.SelectedText = "";
+            this.txtEmail.SelectionLength = 0;
+            this.txtEmail.SelectionStart = 0;
+            this.txtEmail.ShortcutsEnabled = true;
+            this.txtEmail.Size = new System.Drawing.Size(260, 39);
+            this.txtEmail.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            this.txtEmail.TabIndex = 9;
+            this.txtEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtEmail.TextMarginBottom = 0;
+            this.txtEmail.TextMarginLeft = 3;
+            this.txtEmail.TextMarginTop = 1;
+            this.txtEmail.TextPlaceholder = "";
+            this.txtEmail.UseSystemPasswordChar = false;
+            this.txtEmail.WordWrap = true;
             // 
             // bunifuButton1
             // 
@@ -298,7 +488,7 @@
             stateProperties12.PlaceholderForeColor = System.Drawing.Color.Empty;
             this.txtPass.OnIdleState = stateProperties12;
             this.txtPass.Padding = new System.Windows.Forms.Padding(3);
-            this.txtPass.PasswordChar = '\0';
+            this.txtPass.PasswordChar = '*';
             this.txtPass.PlaceholderForeColor = System.Drawing.Color.Silver;
             this.txtPass.PlaceholderText = "";
             this.txtPass.ReadOnly = false;
@@ -394,189 +584,27 @@
             this.txtUser.UseSystemPasswordChar = false;
             this.txtUser.WordWrap = true;
             // 
-            // bunifuLabel3
+            // pictureBox1
             // 
-            this.bunifuLabel3.AllowParentOverrides = false;
-            this.bunifuLabel3.AutoEllipsis = false;
-            this.bunifuLabel3.CursorType = null;
-            this.bunifuLabel3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuLabel3.ForeColor = System.Drawing.Color.DarkBlue;
-            this.bunifuLabel3.Location = new System.Drawing.Point(211, 257);
-            this.bunifuLabel3.Name = "bunifuLabel3";
-            this.bunifuLabel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel3.Size = new System.Drawing.Size(144, 22);
-            this.bunifuLabel3.TabIndex = 10;
-            this.bunifuLabel3.Text = "Ingrese su email";
-            this.bunifuLabel3.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel3.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(448, 395);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(38, 39);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // txtEmail
+            // pictureBox2
             // 
-            this.txtEmail.AcceptsReturn = false;
-            this.txtEmail.AcceptsTab = false;
-            this.txtEmail.AnimationSpeed = 200;
-            this.txtEmail.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.txtEmail.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.txtEmail.AutoSizeHeight = true;
-            this.txtEmail.BackColor = System.Drawing.Color.White;
-            this.txtEmail.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("txtEmail.BackgroundImage")));
-            this.txtEmail.BorderColorActive = System.Drawing.Color.DodgerBlue;
-            this.txtEmail.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.txtEmail.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            this.txtEmail.BorderColorIdle = System.Drawing.Color.SkyBlue;
-            this.txtEmail.BorderRadius = 1;
-            this.txtEmail.BorderThickness = 1;
-            this.txtEmail.CharacterCase = Bunifu.UI.WinForms.BunifuTextBox.CharacterCases.Normal;
-            this.txtEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.txtEmail.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtEmail.DefaultFont = new System.Drawing.Font("Segoe UI", 9.25F);
-            this.txtEmail.DefaultText = "";
-            this.txtEmail.FillColor = System.Drawing.Color.LightCyan;
-            this.txtEmail.HideSelection = true;
-            this.txtEmail.IconLeft = null;
-            this.txtEmail.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtEmail.IconPadding = 10;
-            this.txtEmail.IconRight = null;
-            this.txtEmail.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtEmail.Lines = new string[0];
-            this.txtEmail.Location = new System.Drawing.Point(163, 296);
-            this.txtEmail.MaxLength = 32767;
-            this.txtEmail.MinimumSize = new System.Drawing.Size(1, 1);
-            this.txtEmail.Modified = false;
-            this.txtEmail.Multiline = false;
-            this.txtEmail.Name = "txtEmail";
-            stateProperties5.BorderColor = System.Drawing.Color.Firebrick;
-            stateProperties5.FillColor = System.Drawing.Color.MintCream;
-            stateProperties5.ForeColor = System.Drawing.Color.Black;
-            stateProperties5.PlaceholderForeColor = System.Drawing.Color.Gray;
-            this.txtEmail.OnActiveState = stateProperties5;
-            stateProperties6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties6.FillColor = System.Drawing.Color.BlanchedAlmond;
-            stateProperties6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties6.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.txtEmail.OnDisabledState = stateProperties6;
-            stateProperties7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties7.FillColor = System.Drawing.Color.Empty;
-            stateProperties7.ForeColor = System.Drawing.Color.Empty;
-            stateProperties7.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtEmail.OnHoverState = stateProperties7;
-            stateProperties8.BorderColor = System.Drawing.Color.SkyBlue;
-            stateProperties8.FillColor = System.Drawing.Color.LightCyan;
-            stateProperties8.ForeColor = System.Drawing.Color.Empty;
-            stateProperties8.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtEmail.OnIdleState = stateProperties8;
-            this.txtEmail.Padding = new System.Windows.Forms.Padding(3);
-            this.txtEmail.PasswordChar = '\0';
-            this.txtEmail.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.txtEmail.PlaceholderText = "";
-            this.txtEmail.ReadOnly = false;
-            this.txtEmail.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtEmail.SelectedText = "";
-            this.txtEmail.SelectionLength = 0;
-            this.txtEmail.SelectionStart = 0;
-            this.txtEmail.ShortcutsEnabled = true;
-            this.txtEmail.Size = new System.Drawing.Size(260, 39);
-            this.txtEmail.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtEmail.TabIndex = 9;
-            this.txtEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtEmail.TextMarginBottom = 0;
-            this.txtEmail.TextMarginLeft = 3;
-            this.txtEmail.TextMarginTop = 1;
-            this.txtEmail.TextPlaceholder = "";
-            this.txtEmail.UseSystemPasswordChar = false;
-            this.txtEmail.WordWrap = true;
-            // 
-            // bunifuLabel4
-            // 
-            this.bunifuLabel4.AllowParentOverrides = false;
-            this.bunifuLabel4.AutoEllipsis = false;
-            this.bunifuLabel4.CursorType = null;
-            this.bunifuLabel4.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.bunifuLabel4.ForeColor = System.Drawing.Color.DarkBlue;
-            this.bunifuLabel4.Location = new System.Drawing.Point(423, 565);
-            this.bunifuLabel4.Name = "bunifuLabel4";
-            this.bunifuLabel4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel4.Size = new System.Drawing.Size(161, 17);
-            this.bunifuLabel4.TabIndex = 12;
-            this.bunifuLabel4.Text = "Si tiene código, ingréselo";
-            this.bunifuLabel4.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel4.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // txtAdmin
-            // 
-            this.txtAdmin.AcceptsReturn = false;
-            this.txtAdmin.AcceptsTab = false;
-            this.txtAdmin.AnimationSpeed = 200;
-            this.txtAdmin.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.txtAdmin.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.txtAdmin.AutoSizeHeight = true;
-            this.txtAdmin.BackColor = System.Drawing.Color.White;
-            this.txtAdmin.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("txtAdmin.BackgroundImage")));
-            this.txtAdmin.BorderColorActive = System.Drawing.Color.DodgerBlue;
-            this.txtAdmin.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.txtAdmin.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            this.txtAdmin.BorderColorIdle = System.Drawing.Color.SkyBlue;
-            this.txtAdmin.BorderRadius = 1;
-            this.txtAdmin.BorderThickness = 1;
-            this.txtAdmin.CharacterCase = Bunifu.UI.WinForms.BunifuTextBox.CharacterCases.Normal;
-            this.txtAdmin.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.txtAdmin.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtAdmin.DefaultFont = new System.Drawing.Font("Segoe UI", 9.25F);
-            this.txtAdmin.DefaultText = "";
-            this.txtAdmin.FillColor = System.Drawing.Color.LightCyan;
-            this.txtAdmin.HideSelection = true;
-            this.txtAdmin.IconLeft = null;
-            this.txtAdmin.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtAdmin.IconPadding = 10;
-            this.txtAdmin.IconRight = null;
-            this.txtAdmin.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtAdmin.Lines = new string[0];
-            this.txtAdmin.Location = new System.Drawing.Point(461, 588);
-            this.txtAdmin.MaxLength = 32767;
-            this.txtAdmin.MinimumSize = new System.Drawing.Size(1, 1);
-            this.txtAdmin.Modified = false;
-            this.txtAdmin.Multiline = false;
-            this.txtAdmin.Name = "txtAdmin";
-            stateProperties1.BorderColor = System.Drawing.Color.Firebrick;
-            stateProperties1.FillColor = System.Drawing.Color.MintCream;
-            stateProperties1.ForeColor = System.Drawing.Color.Black;
-            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Gray;
-            this.txtAdmin.OnActiveState = stateProperties1;
-            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties2.FillColor = System.Drawing.Color.BlanchedAlmond;
-            stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.txtAdmin.OnDisabledState = stateProperties2;
-            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties3.FillColor = System.Drawing.Color.Empty;
-            stateProperties3.ForeColor = System.Drawing.Color.Empty;
-            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtAdmin.OnHoverState = stateProperties3;
-            stateProperties4.BorderColor = System.Drawing.Color.SkyBlue;
-            stateProperties4.FillColor = System.Drawing.Color.LightCyan;
-            stateProperties4.ForeColor = System.Drawing.Color.Empty;
-            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtAdmin.OnIdleState = stateProperties4;
-            this.txtAdmin.Padding = new System.Windows.Forms.Padding(3);
-            this.txtAdmin.PasswordChar = '\0';
-            this.txtAdmin.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.txtAdmin.PlaceholderText = "";
-            this.txtAdmin.ReadOnly = false;
-            this.txtAdmin.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtAdmin.SelectedText = "";
-            this.txtAdmin.SelectionLength = 0;
-            this.txtAdmin.SelectionStart = 0;
-            this.txtAdmin.ShortcutsEnabled = true;
-            this.txtAdmin.Size = new System.Drawing.Size(111, 39);
-            this.txtAdmin.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtAdmin.TabIndex = 11;
-            this.txtAdmin.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtAdmin.TextMarginBottom = 0;
-            this.txtAdmin.TextMarginLeft = 3;
-            this.txtAdmin.TextMarginTop = 1;
-            this.txtAdmin.TextPlaceholder = "";
-            this.txtAdmin.UseSystemPasswordChar = false;
-            this.txtAdmin.WordWrap = true;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(448, 395);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(38, 39);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 14;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // Registro
             // 
@@ -589,6 +617,8 @@
             this.bunifuGradientPanel1.ResumeLayout(false);
             this.bunifuGradientPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuPictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -607,5 +637,7 @@
         private Bunifu.UI.WinForms.BunifuTextBox txtAdmin;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel3;
         private Bunifu.UI.WinForms.BunifuTextBox txtEmail;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
