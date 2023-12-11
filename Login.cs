@@ -25,8 +25,8 @@ namespace WindowsFormsApp1
             string conexionABDDADMIN = "Data Source=DESKTOP-PPMBHAK\\SQLEXPRESS;Initial Catalog=master;User ID=sa;Password=;";
 
             creacionInicial(conexionABDDADMIN);
+            triggers(conexionABDDADMIN);
             insertarDatosIniciales(conexionABDDADMIN);
-          
         }
 
         private void bunifuLabel3_Click(object sender, EventArgs e)
@@ -194,7 +194,7 @@ namespace WindowsFormsApp1
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error: " + ex.Message);
+                    //MessageBox.Show("Error: " + ex.Message);
                 }
 
                 conexion.Close();
@@ -202,7 +202,83 @@ namespace WindowsFormsApp1
 
 
 
+
         }
+
+        public static void triggers(string con)
+        {
+            string[] crearTriggers = new string[10];
+            crearTriggers[0] = "use ProyectoFinalTBDD ";
+            crearTriggers[1] = "create TRIGGER proyecto.AuditInsertarLib ON proyecto.Libreria " +
+                "FOR INSERT " +
+                "AS " +
+                "INSERT INTO Auditoria SELECT 'insert',GETDATE(),'Inserción de un registro en Libreria',SYSTEM_USER,HOST_NAME(),APP_NAME() ";
+
+            crearTriggers[2] = " create TRIGGER proyecto.AuditActualizarLib ON proyecto.Libreria FOR UPDATE " +
+         
+                "AS " +
+                "INSERT INTO Auditoria SELECT 'Update',GETDATE(),'Modificación de un registro en Libreria',SYSTEM_USER,HOST_NAME(),APP_NAME() ";
+
+            crearTriggers[3] = " create TRIGGER AuditBorrarLib ON proyecto.Libreria " +
+                "FOR DELETE " +
+                "AS " +
+                "INSERT INTO Auditoria SELECT 'Delete',GETDATE(),'Borrado de un registro en Libreria',SYSTEM_USER,HOST_NAME(),APP_NAME() ";
+            crearTriggers[4] = "create TRIGGER proyecto.AuditInsertarTienda ON proyecto.Tienda " +
+                "FOR INSERT " +
+                "AS " +
+                "INSERT INTO Auditoria SELECT 'insert',GETDATE(),'Inserción de un registro en Tienda',SYSTEM_USER,HOST_NAME(),APP_NAME() ";
+
+            crearTriggers[5] = " create TRIGGER proyecto.AuditActualizarTienda ON proyecto.Tienda FOR UPDATE " +
+               
+                "AS " +
+                "INSERT INTO Auditoria SELECT 'Update',GETDATE(),'Modificación de un registro en Tienda',SYSTEM_USER,HOST_NAME(),APP_NAME()";
+
+            crearTriggers[6] = " create TRIGGER AuditBorrarTienda ON proyecto.Tienda " +
+                "FOR DELETE " +
+                "AS " +
+                "INSERT INTO Auditoria SELECT 'Delete',GETDATE(),'Borrado de un registro en Tienda',SYSTEM_USER,HOST_NAME(),APP_NAME()";
+
+            crearTriggers[7] = "create TRIGGER proyecto.AuditInsertarUsuario ON proyecto.Usuario " +
+                "FOR INSERT " +
+                "AS " +
+                "INSERT INTO Auditoria SELECT 'insert',GETDATE(),'Inserción de un registro en Usuario',SYSTEM_USER,HOST_NAME(),APP_NAME()";
+
+            crearTriggers[8] = " create TRIGGER proyecto.AuditActualizarUsuario ON proyecto.Usuario FOR UPDATE " +
+              
+                "AS " +
+                "INSERT INTO Auditoria SELECT 'Update',GETDATE(),'Modificación de un registro en Usuario',SYSTEM_USER,HOST_NAME(),APP_NAME()";
+
+            crearTriggers[9] = " create TRIGGER AuditBorrarUsuario ON proyecto.Usuario " +
+                "FOR DELETE " +
+                "AS " +
+                "INSERT INTO Auditoria SELECT 'Delete',GETDATE(),'Borrado de un registro en Usuario',SYSTEM_USER,HOST_NAME(),APP_NAME()";
+
+            using (SqlConnection conexion = new SqlConnection(con))
+            {
+                try
+                {
+                    conexion.Open();
+                    for (int i = 0; i < crearTriggers.Length; i++)
+                    {
+                        using (SqlCommand command = new SqlCommand(crearTriggers[i], conexion))
+                        {
+                            // Ejecutar la consulta
+                            command.ExecuteNonQuery();
+                          //  MessageBox.Show($"Creado exitosamente los datos de las tablas{i}");
+                        }
+                    }
+
+
+                }
+                catch (Exception ex)
+                {
+                    //MessageBox.Show("Error: " + ex.Message);
+                }
+
+                conexion.Close();
+            }
+        }
+
     }
 }
 
