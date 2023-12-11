@@ -19,12 +19,6 @@ namespace WindowsFormsApp1
                 try
                 {
                     conexion.Open();
-                    
-                    Principal p = new Principal();
-                    p.Show();
-                    Login l = new Login();
-                    l.Hide();
-                   
 
 
                 }
