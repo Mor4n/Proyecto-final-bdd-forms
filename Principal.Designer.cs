@@ -63,6 +63,8 @@
             this.rbAdd = new System.Windows.Forms.RadioButton();
             this.rbModificar = new System.Windows.Forms.RadioButton();
             this.rbEliminar = new System.Windows.Forms.RadioButton();
+            this.lblIdJuego = new System.Windows.Forms.Label();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.menu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -337,7 +339,7 @@
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(779, 194);
+            this.txtDescripcion.Location = new System.Drawing.Point(775, 194);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(181, 62);
@@ -346,7 +348,7 @@
             // 
             // txtPrecio
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(814, 262);
+            this.txtPrecio.Location = new System.Drawing.Point(779, 262);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(100, 20);
             this.txtPrecio.TabIndex = 15;
@@ -425,6 +427,7 @@
             this.rbModificar.TabStop = true;
             this.rbModificar.Text = "Modificar";
             this.rbModificar.UseVisualStyleBackColor = true;
+            this.rbModificar.CheckedChanged += new System.EventHandler(this.rbModificar_CheckedChanged);
             // 
             // rbEliminar
             // 
@@ -437,11 +440,31 @@
             this.rbEliminar.Text = "Eliminar";
             this.rbEliminar.UseVisualStyleBackColor = true;
             // 
+            // lblIdJuego
+            // 
+            this.lblIdJuego.AutoSize = true;
+            this.lblIdJuego.Location = new System.Drawing.Point(694, 99);
+            this.lblIdJuego.Name = "lblIdJuego";
+            this.lblIdJuego.Size = new System.Drawing.Size(16, 13);
+            this.lblIdJuego.TabIndex = 21;
+            this.lblIdJuego.Text = "Id";
+            this.lblIdJuego.Visible = false;
+            // 
+            // txtId
+            // 
+            this.txtId.Location = new System.Drawing.Point(779, 96);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(85, 20);
+            this.txtId.TabIndex = 22;
+            this.txtId.Visible = false;
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 551);
+            this.Controls.Add(this.txtId);
+            this.Controls.Add(this.lblIdJuego);
             this.Controls.Add(this.lblAdPrecio);
             this.Controls.Add(this.lblAdDescripcion);
             this.Controls.Add(this.lblAdPortada);
@@ -511,6 +534,8 @@
         private System.Windows.Forms.Label lblAdPortada;
         private System.Windows.Forms.Label lblAdDescripcion;
         private System.Windows.Forms.Label lblAdPrecio;
+        private System.Windows.Forms.Label lblIdJuego;
+        private System.Windows.Forms.TextBox txtId;
     }
 }
 

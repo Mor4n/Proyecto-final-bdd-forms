@@ -162,7 +162,8 @@ namespace WindowsFormsApp1
                     txtDescripcion.Visible = true;
                     txtPrecio.Visible = true;
                     groupBox1.Visible = true;
-
+                    lblIdJuego.Visible = true;
+                    txtId.Visible = true;
 
 
 
@@ -201,6 +202,8 @@ namespace WindowsFormsApp1
             txtDescripcion.Visible = false;
             txtPrecio.Visible = false;
             groupBox1.Visible = false;
+            lblIdJuego.Visible = false;
+            txtId.Visible= false;
 
 
         }
@@ -254,6 +257,10 @@ namespace WindowsFormsApp1
                 case 1:
                     darClickLlenar("Libreria");
                     break;
+                case 2:
+
+                    darClickLlenar("Tienda");
+                    break;
             }
            
 
@@ -263,17 +270,17 @@ namespace WindowsFormsApp1
             string nombre = lblNombreJuego.Text = dataJuegos.CurrentRow.Cells[0].Value.ToString();
 
             SqlConnection conexion = new SqlConnection(conexionABDD);
-            try
-            {
+            
 
-                string[] consultas = new string[3];
-                string[] datos = new string[3];
+                string[] consultas = new string[4];
+                string[] datos = new string[4];
 
 
 
                 consultas[0] = $"SELECT Portada  FROM proyecto.{tabla} where nombre = '{nombre}'";
                 consultas[1] = $"SELECT precio  FROM proyecto.{tabla} where nombre = '{nombre}'";
                 consultas[2] = $"SELECT descripcion  FROM proyecto.{tabla} where nombre = '{nombre}'";
+                consultas[3] = $"SELECT Idjuego  FROM proyecto.{tabla} where nombre = '{nombre}'";
 
                 conexion.Open();
                 DataTable dtbl = new DataTable();
@@ -285,19 +292,20 @@ namespace WindowsFormsApp1
                     var resultado = sqlDA.ExecuteScalar();
                     datos[i] = Convert.ToString(resultado);
                 }
-
-                lblNombreJuego.Text = nombre;
-                pbImagenJuego.Load($"{datos[0]}");
-                lblPrecio.Text = datos[1];
-                lblDescripcion.Text = datos[2];
-
-
-
-            }
-
-            catch (Exception ex)
+                if (botonElegido != 2)
             {
-                MessageBox.Show("Error de inicio de sesión: " + ex.Message);
+                    lblNombreJuego.Text = nombre;
+                    pbImagenJuego.Load($"{datos[0]}");
+                    lblPrecio.Text = datos[1];
+                    lblDescripcion.Text = datos[2];
+            }
+            else
+            {
+                txtId.Text = datos[3].ToString();
+                txtNombre.Text = nombre;
+                txtPortada.Text=datos[0].ToString();
+                txtPrecio.Text = datos[1].ToString();
+                txtDescripcion.Text = datos[2].ToString();
             }
 
         }
@@ -402,7 +410,69 @@ namespace WindowsFormsApp1
                     MessageBox.Show("El juego iniciará pronto");
                     break;
                 case 2:
+                    string consulta="";
                     //Aqui va el de añadir
+                    if (rbAdd.Checked)
+                    {
+                         consulta = "exec proyecto.proce_BaseTienda " +
+                $"@IdJuego ={txtId.Text} , " +
+                $"@Portada = '{txtPortada.Text}'," +
+                $"@Nombre = '{txtNombre.Text}', " +
+                $"@Precio = {txtPrecio.Text}, " +
+                $"@Descripcion = '{txtDescripcion.Text}';";
+
+
+                    }
+                   else if (rbEliminar.Checked)
+                    {
+                     var op=   MessageBox.Show($"Seguro que deseas eliminar el juego con el id ={txtId.Text}","Advertencia",MessageBoxButtons.YesNo);
+                        if (op==DialogResult.Yes)
+                        {
+                            consulta = "exec proyecto.proce_EliminarJuego " +
+                              $"@IdJuego ={txtId.Text} ;";
+                        }
+                        
+
+
+                    }
+                    else if (rbModificar.Checked)
+                    {
+                        consulta = "exec proyecto.proce_ActualizarJuego " +
+                               $"@IdJuego ={txtId.Text} , " +
+                               $"@Portada = '{txtPortada.Text}'," +
+                               $"@Nombre = '{txtNombre.Text}', " +
+                               $"@Precio = {txtPrecio.Text}, " +
+                              $"@Descripcion = '{txtDescripcion.Text}';";
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Elija un botón");
+                    }
+                    MessageBox.Show(consulta);
+                    using (SqlConnection con = new SqlConnection(conexionABDD))
+                    {
+                        
+                            con.Open();
+                                using (SqlCommand command = new SqlCommand(consulta, con))
+                                {
+                                    // Ejecutar la consulta
+                                    command.ExecuteNonQuery();
+                                //   MessageBox.Show($"Creado exitosamente los datos de las tablas{i}");
+
+                                SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT nombre as 'Nombre del videojuego' FROM proyecto.Tienda ", con);
+                                DataTable dtbl = new DataTable();
+
+                                sqlDA.Fill(dtbl);
+
+                                dataJuegos.DataSource = dtbl;
+                            }
+                            
+
+
+
+                    }
+
                     break;
             }
 
@@ -412,6 +482,7 @@ namespace WindowsFormsApp1
         {
             ocultar();
             hacerVisible(1);
+            botonElegido=1;
             using (SqlConnection conexion = new SqlConnection(conexionABDD))
             {
                 try
@@ -445,10 +516,36 @@ namespace WindowsFormsApp1
 
         }
 
-        private void btnAdministrar_Click(object sender, EventArgs e)
+        public void btnAdministrar_Click(object sender, EventArgs e)
         {
             ocultar();
             hacerVisible(2);
+            
+
+            botonElegido = 2;
+            using (SqlConnection conexion = new SqlConnection(conexionABDD))
+            {
+                try
+                {
+                    conexion.Open();
+                    SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT nombre as 'Nombre del videojuego' FROM proyecto.Tienda ", conexion);
+                    DataTable dtbl = new DataTable();
+
+                    sqlDA.Fill(dtbl);
+
+                    dataJuegos.DataSource = dtbl;
+
+
+
+
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error de inicio de sesión: " + ex.Message);
+                }
+
+            }
 
 
 
@@ -458,7 +555,7 @@ namespace WindowsFormsApp1
         {
             ocultar();
             hacerVisible(3);
-
+            botonElegido = 3;
             using (SqlConnection conexion = new SqlConnection(c))
             {
                 try
@@ -627,6 +724,11 @@ namespace WindowsFormsApp1
 
 
 
+
+        }
+
+        private void rbModificar_CheckedChanged(object sender, EventArgs e)
+        {
 
         }
     }
