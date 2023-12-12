@@ -28,11 +28,11 @@ namespace WindowsFormsApp1
             string pass = txtPass.Text;
             string email = txtEmail.Text;
             string codigo = txtAdmin.Text;
-
+            string dinero = txtDinero.Text;
             string conexionABDDADMIN = "Data Source=DESKTOP-PPMBHAK\\SQLEXPRESS;Initial Catalog=master;User ID=sa;Password=;";
             crearLogin(conexionABDDADMIN, user, pass, email, codigo);
             //  crearUsuario(conexionABDDADMIN);
-            procedimientoUsuario(conexionABDDADMIN, user, email, codigo);
+            procedimientoUsuario(conexionABDDADMIN, user, email, codigo,dinero);
             this.Close();
             
 
@@ -98,7 +98,7 @@ namespace WindowsFormsApp1
                     else
                     {
                         //Si no lo es, entonces solo puede ver
-                        permisosConsulta[1] = $"GRANT SELECT TO {user}";
+                        permisosConsulta[1] = $"GRANT SELECT,EXECUTE TO {user}";
                         permisosConsulta[2] = $"DENY SELECT ON proyecto.Auditoria TO {user}";
                     }
                     for (int i = 0; i < permisosConsulta.Length; i++)
@@ -123,7 +123,7 @@ namespace WindowsFormsApp1
 
         }
 
-        public static void procedimientoUsuario(string con, string usuario, string email, string codigo)
+        public static void procedimientoUsuario(string con, string usuario, string email, string codigo,string dinero)
         {
             int rol = 0;
 
@@ -141,7 +141,7 @@ namespace WindowsFormsApp1
                                         "exec proyecto.proce_crearUser " +
                                         $"@Nombre_Usuario = {usuario}, " +
                                         $"@Email_Usuario = '{email}', " +
-                                        "@Dinero = 0, " +
+                                        $"@Dinero = {dinero}, " +
                                         $"@Rol = {rol};";
 
                     using (SqlCommand command = new SqlCommand(consulta, conexion))

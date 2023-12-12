@@ -44,17 +44,19 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnReporte = new System.Windows.Forms.Button();
-            this.panelTienda = new System.Windows.Forms.Panel();
             this.lblNombreJuego = new System.Windows.Forms.Label();
             this.pbImagenJuego = new System.Windows.Forms.PictureBox();
             this.lblPrecio = new System.Windows.Forms.Label();
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.btnComprar = new System.Windows.Forms.Button();
+            this.dataJuegos = new System.Windows.Forms.DataGridView();
+            this.lblDinero = new System.Windows.Forms.Label();
             this.menu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenJuego)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataJuegos)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuDragControl1
@@ -152,6 +154,7 @@
             this.btnLibreria.Text = "       Librería";
             this.btnLibreria.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLibreria.UseVisualStyleBackColor = true;
+            this.btnLibreria.Click += new System.EventHandler(this.btnLibreria_Click);
             // 
             // btnAdministrar
             // 
@@ -167,6 +170,7 @@
             this.btnAdministrar.Text = "       Administrar tienda";
             this.btnAdministrar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAdministrar.UseVisualStyleBackColor = true;
+            this.btnAdministrar.Click += new System.EventHandler(this.btnAdministrar_Click);
             // 
             // btnAuditoria
             // 
@@ -182,6 +186,7 @@
             this.btnAuditoria.Text = "       Auditoría";
             this.btnAuditoria.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAuditoria.UseVisualStyleBackColor = true;
+            this.btnAuditoria.Click += new System.EventHandler(this.btnAuditoria_Click);
             // 
             // timerMenu
             // 
@@ -225,18 +230,13 @@
             this.btnReporte.Text = "       Reporte";
             this.btnReporte.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReporte.UseVisualStyleBackColor = true;
-            // 
-            // panelTienda
-            // 
-            this.panelTienda.Location = new System.Drawing.Point(302, 49);
-            this.panelTienda.Name = "panelTienda";
-            this.panelTienda.Size = new System.Drawing.Size(420, 306);
-            this.panelTienda.TabIndex = 4;
+            this.btnReporte.Click += new System.EventHandler(this.btnReporte_Click);
             // 
             // lblNombreJuego
             // 
             this.lblNombreJuego.AutoSize = true;
-            this.lblNombreJuego.Location = new System.Drawing.Point(809, 90);
+            this.lblNombreJuego.Location = new System.Drawing.Point(788, 84);
+            this.lblNombreJuego.MaximumSize = new System.Drawing.Size(100, 60);
             this.lblNombreJuego.Name = "lblNombreJuego";
             this.lblNombreJuego.Size = new System.Drawing.Size(44, 13);
             this.lblNombreJuego.TabIndex = 5;
@@ -254,7 +254,7 @@
             // lblPrecio
             // 
             this.lblPrecio.AutoSize = true;
-            this.lblPrecio.Location = new System.Drawing.Point(816, 374);
+            this.lblPrecio.Location = new System.Drawing.Point(811, 377);
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.Size = new System.Drawing.Size(37, 13);
             this.lblPrecio.TabIndex = 7;
@@ -279,18 +279,45 @@
             this.btnComprar.TabIndex = 9;
             this.btnComprar.Text = "Comprar";
             this.btnComprar.UseVisualStyleBackColor = true;
+            this.btnComprar.Click += new System.EventHandler(this.btnComprar_Click);
+            // 
+            // dataJuegos
+            // 
+            this.dataJuegos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataJuegos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataJuegos.Location = new System.Drawing.Point(297, 46);
+            this.dataJuegos.Name = "dataJuegos";
+            this.dataJuegos.RowHeadersVisible = false;
+            this.dataJuegos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dataJuegos.Size = new System.Drawing.Size(376, 358);
+            this.dataJuegos.TabIndex = 10;
+            this.dataJuegos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataJuegos_CellClick);
+            this.dataJuegos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataJuegos_CellContentClick);
+            // 
+            // lblDinero
+            // 
+            this.lblDinero.AutoSize = true;
+            this.lblDinero.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDinero.ForeColor = System.Drawing.Color.Gray;
+            this.lblDinero.Location = new System.Drawing.Point(785, 9);
+            this.lblDinero.Name = "lblDinero";
+            this.lblDinero.Size = new System.Drawing.Size(27, 32);
+            this.lblDinero.TabIndex = 11;
+            this.lblDinero.Text = "$";
+            this.lblDinero.Visible = false;
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(925, 460);
+            this.Controls.Add(this.lblDinero);
+            this.Controls.Add(this.dataJuegos);
             this.Controls.Add(this.btnComprar);
             this.Controls.Add(this.lblDescripcion);
             this.Controls.Add(this.lblPrecio);
             this.Controls.Add(this.pbImagenJuego);
             this.Controls.Add(this.lblNombreJuego);
-            this.Controls.Add(this.panelTienda);
             this.Controls.Add(this.menu);
             this.Controls.Add(this.bunifuFormResizeIcon1);
             this.Name = "Principal";
@@ -302,6 +329,7 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenJuego)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataJuegos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -322,12 +350,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnReporte;
-        private System.Windows.Forms.Panel panelTienda;
         private System.Windows.Forms.Label lblNombreJuego;
         private System.Windows.Forms.PictureBox pbImagenJuego;
         private System.Windows.Forms.Label lblPrecio;
         private System.Windows.Forms.Label lblDescripcion;
         private System.Windows.Forms.Button btnComprar;
+        private System.Windows.Forms.DataGridView dataJuegos;
+        private System.Windows.Forms.Label lblDinero;
     }
 }
 
