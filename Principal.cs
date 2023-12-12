@@ -131,13 +131,42 @@ namespace WindowsFormsApp1
                     pbImagenJuego.Visible = true;
                     lblDescripcion.Visible = true;
                     lblPrecio.Visible = true;
-                    btnComprar.Visible = true;
                     lblDinero.Visible = true;
+                    btnComprar.Text = "Comprar";
+                    btnComprar.Visible = true;
                     break;
                 case 1:
+                    dataJuegos.Visible = true;
 
+                    dataJuegos.Location = new System.Drawing.Point(298, 46);
+                    dataJuegos.Size = new Size(376, 358);
+                    lblNombreJuego.Visible = true;
+                    pbImagenJuego.Visible = true;
+                    lblDescripcion.Visible = true;
+                    btnComprar.Text = "Jugar";
+                    btnComprar.Visible = true;
                     break;
                 case 2:
+                    dataJuegos.Visible = true;
+
+                    dataJuegos.Location = new System.Drawing.Point(298, 46);
+                    dataJuegos.Size = new Size(376, 358);
+                    btnComprar.Visible = true;
+                    btnComprar.Text = "Realizar operación";
+                    lblAdNombre.Visible = true;
+                    lblAdPortada.Visible = true;
+                    lblAdDescripcion.Visible = true;
+                    lblAdPrecio.Visible = true;
+                    txtNombre.Visible = true;
+                    txtPortada.Visible = true;
+                    txtDescripcion.Visible = true;
+                    txtPrecio.Visible = true;
+                    groupBox1.Visible = true;
+
+
+
+
+
                     break;
                 case 3:
 
@@ -161,15 +190,27 @@ namespace WindowsFormsApp1
             lblPrecio.Visible = false;
             lblDinero.Visible = false;
             btnComprar.Visible = false;
-            //
+            //Administrar
+            btnComprar.Visible = false;
+            lblAdNombre.Visible = false;
+            lblAdPortada.Visible = false;
+            lblAdDescripcion.Visible = false;
+            lblAdPrecio.Visible = false;
+            txtNombre.Visible = false;
+            txtPortada.Visible = false;
+            txtDescripcion.Visible = false;
+            txtPrecio.Visible = false;
+            groupBox1.Visible = false;
+
 
         }
-
+        int botonElegido;
         private void btnTienda_Click(object sender, EventArgs e)
         {
             ocultar();
             hacerVisible(0);
             actualizarDinero();
+            botonElegido = 0;
             using (SqlConnection conexion = new SqlConnection(conexionABDD))
             {
                 try
@@ -205,7 +246,20 @@ namespace WindowsFormsApp1
 
         private void dataJuegos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            switch (botonElegido)
+            {
+                case 0:
+                    darClickLlenar("Tienda");
+                    break;
+                case 1:
+                    darClickLlenar("Libreria");
+                    break;
+            }
+           
 
+        }
+        public void darClickLlenar(string tabla)
+        {
             string nombre = lblNombreJuego.Text = dataJuegos.CurrentRow.Cells[0].Value.ToString();
 
             SqlConnection conexion = new SqlConnection(conexionABDD);
@@ -217,9 +271,9 @@ namespace WindowsFormsApp1
 
 
 
-                consultas[0] = $"SELECT Portada  FROM proyecto.Tienda where nombre = '{nombre}'";
-                consultas[1] = $"SELECT precio  FROM proyecto.Tienda where nombre = '{nombre}'";
-                consultas[2] = $"SELECT descripcion  FROM proyecto.Tienda where nombre = '{nombre}'";
+                consultas[0] = $"SELECT Portada  FROM proyecto.{tabla} where nombre = '{nombre}'";
+                consultas[1] = $"SELECT precio  FROM proyecto.{tabla} where nombre = '{nombre}'";
+                consultas[2] = $"SELECT descripcion  FROM proyecto.{tabla} where nombre = '{nombre}'";
 
                 conexion.Open();
                 DataTable dtbl = new DataTable();
@@ -247,97 +301,109 @@ namespace WindowsFormsApp1
             }
 
         }
-
         private void btnComprar_Click(object sender, EventArgs e)
         {
-            //Seleccionar id del juego cuyo nombre sea
-            string[] consultas = new string[4];
-            string nombre = lblNombreJuego.Text = dataJuegos.CurrentRow.Cells[0].Value.ToString();
-            consultas[0] = $"SELECT IdJuego  FROM proyecto.Tienda where nombre = '{nombre}'";
-            consultas[1] = $"SELECT dinero from proyecto.Usuario where Nombre_Usuario ='{cUser}'";
-            consultas[2] = $"SELECT precio from proyecto.Tienda where nombre ='{nombre}'";
-            consultas[3] = $"Select IdUsuario from proyecto.usuario where Nombre_usuario='{cUser}'";
-
-
-
-            string[] resultados = new string[4];
-            double dineroUser = 0;
-            double costoJuego = 0;
-
-            SqlConnection conexion = new SqlConnection(conexionABDD);
-            try
+            switch (botonElegido)
             {
-                conexion.Open();
+                case 0:
 
-                for (int i = 0; i < consultas.Length; i++)
-                {
+                    //Seleccionar id del juego cuyo nombre sea
+                    string[] consultas = new string[4];
+                    string nombre = lblNombreJuego.Text = dataJuegos.CurrentRow.Cells[0].Value.ToString();
+                    consultas[0] = $"SELECT IdJuego  FROM proyecto.Tienda where nombre = '{nombre}'";
+                    consultas[1] = $"SELECT dinero from proyecto.Usuario where Nombre_Usuario ='{cUser}'";
+                    consultas[2] = $"SELECT precio from proyecto.Tienda where nombre ='{nombre}'";
+                    consultas[3] = $"Select IdUsuario from proyecto.usuario where Nombre_usuario='{cUser}'";
 
-                    SqlCommand sqlDA = new SqlCommand(consultas[i], conexion);
-                    var resultado = sqlDA.ExecuteScalar();
-                    resultados[i] = Convert.ToString(resultado);
 
-                }
 
-                dineroUser = Convert.ToDouble(resultados[1]);
-                costoJuego = Convert.ToDouble(resultados[2]);
-                string idjuego = resultados[0].ToString();
-                string iduser = resultados[3].ToString();
-                MessageBox.Show($"{dineroUser} {costoJuego}");
+                    string[] resultados = new string[4];
+                    double dineroUser = 0;
+                    double costoJuego = 0;
 
-                if (dineroUser < costoJuego)
-                {
-                    MessageBox.Show($"No se puede hacer la compra, no cuentas con los fondos suficientes, tienes {resultados[1]}");
-                }
-                else
-                {
-                    double resta = dineroUser - costoJuego;
-
-                    var opcion = MessageBox.Show($"Tienes {dineroUser} pesos, te quedarían" +
-                        $"  {resta} ", "Aviso", MessageBoxButtons.YesNo);
-                    if (opcion == DialogResult.Yes)
+                    SqlConnection conexion = new SqlConnection(conexionABDD);
+                    try
                     {
+                        conexion.Open();
 
-                        procedimientosAlmacenadosJuegos();
-                        procedimientosAlmacenadosTienda();
-                        //Crear procedimiento para insert para el juego añadido a su biblioteca
-                        //Crear procedimiento update para el dinero retirado de su cuenta
-
-                        //Ejecutar el procedimiento almacenado para añadir el juego a la biblioteca
-
-
-                        string[] compra = new string[2];
-
-                        compra[0] = "exec proyecto.proce_CompraJuego " +
-                            $"@IdUsuario ={iduser}," +
-                            $"@idjuego={idjuego}";
-                        compra[1] = "exec proyecto.proce_RestarDinero " +
-                            $"@IdUsuario ={iduser}," +
-                            $"@Dinero={resta}";
-
-                        for (int i = 0; i < compra.Length; i++)
+                        for (int i = 0; i < consultas.Length; i++)
                         {
-                            using (SqlCommand command = new SqlCommand(compra[i], conexion))
-                            {
-                                // Ejecutar la consulta
-                                command.ExecuteNonQuery();
-                                //   MessageBox.Show($"Creado exitosamente los datos de las tablas{i}");
 
-                            }
+                            SqlCommand sqlDA = new SqlCommand(consultas[i], conexion);
+                            var resultado = sqlDA.ExecuteScalar();
+                            resultados[i] = Convert.ToString(resultado);
+
                         }
-                        MessageBox.Show("Felicidades por su nueva compra");
-                        actualizarDinero();
+
+                        dineroUser = Convert.ToDouble(resultados[1]);
+                        costoJuego = Convert.ToDouble(resultados[2]);
+                        string idjuego = resultados[0].ToString();
+                        string iduser = resultados[3].ToString();
+                        MessageBox.Show($"{dineroUser} {costoJuego}");
+
+                        if (dineroUser < costoJuego)
+                        {
+                            MessageBox.Show($"No se puede hacer la compra, no cuentas con los fondos suficientes, tienes {resultados[1]}");
+                        }
+                        else
+                        {
+                            double resta = dineroUser - costoJuego;
+
+                            var opcion = MessageBox.Show($"Tienes {dineroUser} pesos, te quedarían" +
+                                $"  {resta} ", "Aviso", MessageBoxButtons.YesNo);
+                            if (opcion == DialogResult.Yes)
+                            {
+
+                                procedimientosAlmacenadosJuegos();
+                                procedimientosAlmacenadosTienda();
+                                //Crear procedimiento para insert para el juego añadido a su biblioteca
+                                //Crear procedimiento update para el dinero retirado de su cuenta
+
+                                //Ejecutar el procedimiento almacenado para añadir el juego a la biblioteca
+
+
+                                string[] compra = new string[2];
+
+                                compra[0] = "exec proyecto.proce_CompraJuego " +
+                                    $"@IdUsuario ={iduser}," +
+                                    $"@idjuego={idjuego}";
+                                compra[1] = "exec proyecto.proce_RestarDinero " +
+                                    $"@IdUsuario ={iduser}," +
+                                    $"@Dinero={resta}";
+
+                                for (int i = 0; i < compra.Length; i++)
+                                {
+                                    using (SqlCommand command = new SqlCommand(compra[i], conexion))
+                                    {
+                                        // Ejecutar la consulta
+                                        command.ExecuteNonQuery();
+                                        //   MessageBox.Show($"Creado exitosamente los datos de las tablas{i}");
+
+                                    }
+                                }
+                                MessageBox.Show("Felicidades por su nueva compra");
+                                actualizarDinero();
+                            }
+
+
+                        }
+
+
+
                     }
 
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error de inicio de sesión: " + ex.Message);
+                    }
+                    break;
 
-                }
-
-
-
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error de inicio de sesión: " + ex.Message);
+                case 1:
+                    MessageBox.Show("El juego iniciará pronto");
+                    break;
+                case 2:
+                    //Aqui va el de añadir
+                    break;
             }
 
         }
@@ -346,12 +412,45 @@ namespace WindowsFormsApp1
         {
             ocultar();
             hacerVisible(1);
+            using (SqlConnection conexion = new SqlConnection(conexionABDD))
+            {
+                try
+                {
+                    conexion.Open();
+                    SqlDataAdapter sqlDA = new SqlDataAdapter("select ti.Nombre" +
+                        " FROM proyecto.Libreria li " +
+                        "JOIN proyecto.Usuario us ON li.IdUsuario = us.IdUsuario " +
+                        "JOIN proyecto.Tienda ti ON li.IdJuego = ti.IdJuego " +
+                        $"where us.Nombre_Usuario='{cUser}' ", conexion);
+                    DataTable dtbl = new DataTable();
+
+                    sqlDA.Fill(dtbl);
+
+                    dataJuegos.DataSource = dtbl;
+
+
+
+
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error de inicio de sesión: " + ex.Message);
+                }
+
+            }
+
+
+
+
         }
 
         private void btnAdministrar_Click(object sender, EventArgs e)
         {
             ocultar();
             hacerVisible(2);
+
+
 
         }
 

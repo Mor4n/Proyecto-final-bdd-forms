@@ -51,12 +51,25 @@
             this.btnComprar = new System.Windows.Forms.Button();
             this.dataJuegos = new System.Windows.Forms.DataGridView();
             this.lblDinero = new System.Windows.Forms.Label();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.txtPortada = new System.Windows.Forms.TextBox();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblAdNombre = new System.Windows.Forms.Label();
+            this.lblAdPortada = new System.Windows.Forms.Label();
+            this.lblAdDescripcion = new System.Windows.Forms.Label();
+            this.lblAdPrecio = new System.Windows.Forms.Label();
+            this.rbAdd = new System.Windows.Forms.RadioButton();
+            this.rbModificar = new System.Windows.Forms.RadioButton();
+            this.rbEliminar = new System.Windows.Forms.RadioButton();
             this.menu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenJuego)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataJuegos)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // bunifuDragControl1
@@ -72,7 +85,7 @@
             this.bunifuFormResizeIcon1.BackColor = System.Drawing.Color.Transparent;
             this.bunifuFormResizeIcon1.ForeColor = System.Drawing.Color.Black;
             this.bunifuFormResizeIcon1.IconSize = 16;
-            this.bunifuFormResizeIcon1.Location = new System.Drawing.Point(907, 442);
+            this.bunifuFormResizeIcon1.Location = new System.Drawing.Point(980, 533);
             this.bunifuFormResizeIcon1.Name = "bunifuFormResizeIcon1";
             this.bunifuFormResizeIcon1.Size = new System.Drawing.Size(21, 21);
             this.bunifuFormResizeIcon1.TabIndex = 2;
@@ -101,10 +114,10 @@
             this.menu.Controls.Add(this.btnReporte);
             this.menu.Dock = System.Windows.Forms.DockStyle.Left;
             this.menu.Location = new System.Drawing.Point(0, 0);
-            this.menu.MaximumSize = new System.Drawing.Size(200, 460);
+            this.menu.MaximumSize = new System.Drawing.Size(200, 590);
             this.menu.MinimumSize = new System.Drawing.Size(41, 460);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(200, 460);
+            this.menu.Size = new System.Drawing.Size(200, 551);
             this.menu.TabIndex = 3;
             // 
             // panel1
@@ -273,7 +286,7 @@
             // 
             // btnComprar
             // 
-            this.btnComprar.Location = new System.Drawing.Point(791, 414);
+            this.btnComprar.Location = new System.Drawing.Point(829, 466);
             this.btnComprar.Name = "btnComprar";
             this.btnComprar.Size = new System.Drawing.Size(85, 34);
             this.btnComprar.TabIndex = 9;
@@ -306,11 +319,138 @@
             this.lblDinero.Text = "$";
             this.lblDinero.Visible = false;
             // 
+            // txtNombre
+            // 
+            this.txtNombre.Location = new System.Drawing.Point(775, 142);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(185, 20);
+            this.txtNombre.TabIndex = 12;
+            this.txtNombre.Visible = false;
+            // 
+            // txtPortada
+            // 
+            this.txtPortada.Location = new System.Drawing.Point(775, 168);
+            this.txtPortada.Name = "txtPortada";
+            this.txtPortada.Size = new System.Drawing.Size(185, 20);
+            this.txtPortada.TabIndex = 13;
+            this.txtPortada.Visible = false;
+            // 
+            // txtDescripcion
+            // 
+            this.txtDescripcion.Location = new System.Drawing.Point(779, 194);
+            this.txtDescripcion.Multiline = true;
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(181, 62);
+            this.txtDescripcion.TabIndex = 14;
+            this.txtDescripcion.Visible = false;
+            // 
+            // txtPrecio
+            // 
+            this.txtPrecio.Location = new System.Drawing.Point(814, 262);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(100, 20);
+            this.txtPrecio.TabIndex = 15;
+            this.txtPrecio.Visible = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rbEliminar);
+            this.groupBox1.Controls.Add(this.rbModificar);
+            this.groupBox1.Controls.Add(this.rbAdd);
+            this.groupBox1.Location = new System.Drawing.Point(697, 439);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(88, 100);
+            this.groupBox1.TabIndex = 16;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Visible = false;
+            // 
+            // lblAdNombre
+            // 
+            this.lblAdNombre.AutoSize = true;
+            this.lblAdNombre.Location = new System.Drawing.Point(687, 142);
+            this.lblAdNombre.Name = "lblAdNombre";
+            this.lblAdNombre.Size = new System.Drawing.Size(44, 13);
+            this.lblAdNombre.TabIndex = 17;
+            this.lblAdNombre.Text = "Nombre";
+            this.lblAdNombre.Visible = false;
+            // 
+            // lblAdPortada
+            // 
+            this.lblAdPortada.AutoSize = true;
+            this.lblAdPortada.Location = new System.Drawing.Point(687, 168);
+            this.lblAdPortada.Name = "lblAdPortada";
+            this.lblAdPortada.Size = new System.Drawing.Size(44, 13);
+            this.lblAdPortada.TabIndex = 18;
+            this.lblAdPortada.Text = "Portada";
+            this.lblAdPortada.Visible = false;
+            // 
+            // lblAdDescripcion
+            // 
+            this.lblAdDescripcion.AutoSize = true;
+            this.lblAdDescripcion.Location = new System.Drawing.Point(680, 206);
+            this.lblAdDescripcion.Name = "lblAdDescripcion";
+            this.lblAdDescripcion.Size = new System.Drawing.Size(63, 13);
+            this.lblAdDescripcion.TabIndex = 19;
+            this.lblAdDescripcion.Text = "Descripción";
+            this.lblAdDescripcion.Visible = false;
+            // 
+            // lblAdPrecio
+            // 
+            this.lblAdPrecio.AutoSize = true;
+            this.lblAdPrecio.Location = new System.Drawing.Point(694, 262);
+            this.lblAdPrecio.Name = "lblAdPrecio";
+            this.lblAdPrecio.Size = new System.Drawing.Size(37, 13);
+            this.lblAdPrecio.TabIndex = 20;
+            this.lblAdPrecio.Text = "Precio";
+            this.lblAdPrecio.Visible = false;
+            // 
+            // rbAdd
+            // 
+            this.rbAdd.AutoSize = true;
+            this.rbAdd.Location = new System.Drawing.Point(17, 20);
+            this.rbAdd.Name = "rbAdd";
+            this.rbAdd.Size = new System.Drawing.Size(55, 17);
+            this.rbAdd.TabIndex = 0;
+            this.rbAdd.TabStop = true;
+            this.rbAdd.Text = "Añadir";
+            this.rbAdd.UseVisualStyleBackColor = true;
+            // 
+            // rbModificar
+            // 
+            this.rbModificar.AutoSize = true;
+            this.rbModificar.Location = new System.Drawing.Point(17, 44);
+            this.rbModificar.Name = "rbModificar";
+            this.rbModificar.Size = new System.Drawing.Size(68, 17);
+            this.rbModificar.TabIndex = 1;
+            this.rbModificar.TabStop = true;
+            this.rbModificar.Text = "Modificar";
+            this.rbModificar.UseVisualStyleBackColor = true;
+            // 
+            // rbEliminar
+            // 
+            this.rbEliminar.AutoSize = true;
+            this.rbEliminar.Location = new System.Drawing.Point(17, 67);
+            this.rbEliminar.Name = "rbEliminar";
+            this.rbEliminar.Size = new System.Drawing.Size(61, 17);
+            this.rbEliminar.TabIndex = 2;
+            this.rbEliminar.TabStop = true;
+            this.rbEliminar.Text = "Eliminar";
+            this.rbEliminar.UseVisualStyleBackColor = true;
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(925, 460);
+            this.ClientSize = new System.Drawing.Size(998, 551);
+            this.Controls.Add(this.lblAdPrecio);
+            this.Controls.Add(this.lblAdDescripcion);
+            this.Controls.Add(this.lblAdPortada);
+            this.Controls.Add(this.lblAdNombre);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.txtPrecio);
+            this.Controls.Add(this.txtDescripcion);
+            this.Controls.Add(this.txtPortada);
+            this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lblDinero);
             this.Controls.Add(this.dataJuegos);
             this.Controls.Add(this.btnComprar);
@@ -330,6 +470,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenJuego)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataJuegos)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -357,6 +499,18 @@
         private System.Windows.Forms.Button btnComprar;
         private System.Windows.Forms.DataGridView dataJuegos;
         private System.Windows.Forms.Label lblDinero;
+        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.TextBox txtPortada;
+        private System.Windows.Forms.TextBox txtDescripcion;
+        private System.Windows.Forms.TextBox txtPrecio;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rbEliminar;
+        private System.Windows.Forms.RadioButton rbModificar;
+        private System.Windows.Forms.RadioButton rbAdd;
+        private System.Windows.Forms.Label lblAdNombre;
+        private System.Windows.Forms.Label lblAdPortada;
+        private System.Windows.Forms.Label lblAdDescripcion;
+        private System.Windows.Forms.Label lblAdPrecio;
     }
 }
 
