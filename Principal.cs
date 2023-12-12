@@ -124,6 +124,9 @@ namespace WindowsFormsApp1
             {
                 case 0:
                     dataJuegos.Visible = true;
+
+                    dataJuegos.Location = new System.Drawing.Point(298, 46);
+                    dataJuegos.Size = new Size(376, 358);
                     lblNombreJuego.Visible = true;
                     pbImagenJuego.Visible = true;
                     lblDescripcion.Visible = true;
@@ -132,10 +135,15 @@ namespace WindowsFormsApp1
                     lblDinero.Visible = true;
                     break;
                 case 1:
+
                     break;
                 case 2:
                     break;
                 case 3:
+
+                    dataJuegos.Visible = true;
+                    dataJuegos.Location = new System.Drawing.Point(206, 3);
+                    dataJuegos.Size = new Size(707, 445);
                     break;
                 case 4:
                     break;
@@ -146,6 +154,7 @@ namespace WindowsFormsApp1
         {
             //Tienda
             dataJuegos.Visible = false;
+            dataJuegos.DataSource= null;
             lblNombreJuego.Visible = false;
             pbImagenJuego.Visible = false;
             lblDescripcion.Visible = false;
@@ -350,6 +359,32 @@ namespace WindowsFormsApp1
         {
             ocultar();
             hacerVisible(3);
+
+            using (SqlConnection conexion = new SqlConnection(c))
+            {
+                try
+                {
+                    conexion.Open();
+                    SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_evento as 'Id evento'," +
+                        "tipo_evento as 'Tipo evento',fecha as 'Fecha', descripcion as 'Descripción'" +
+                        ", usuario as 'Usuario', terminal as 'Terminal'," +
+                        "aplicacion as 'Aplicación' FROM proyecto.Auditoria ", conexion);
+                    DataTable dtbl = new DataTable();
+
+                    sqlDA.Fill(dtbl);
+
+                    dataJuegos.DataSource = dtbl;
+
+
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error de inicio de sesión: " + ex.Message);
+                }
+
+            }
+
         }
 
         private void btnReporte_Click(object sender, EventArgs e)

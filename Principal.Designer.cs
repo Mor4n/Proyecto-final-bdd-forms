@@ -285,7 +285,7 @@
             // 
             this.dataJuegos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataJuegos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataJuegos.Location = new System.Drawing.Point(297, 46);
+            this.dataJuegos.Location = new System.Drawing.Point(298, 46);
             this.dataJuegos.Name = "dataJuegos";
             this.dataJuegos.RowHeadersVisible = false;
             this.dataJuegos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
