@@ -20,7 +20,8 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
-
+        public string globalUser;
+        public string globalPass;
         private void Login_Load(object sender, EventArgs e)
         {
             string conexionABDDADMIN = "Data Source=DESKTOP-PPMBHAK\\SQLEXPRESS;Initial Catalog=master;User ID=sa;Password=;";
@@ -42,7 +43,7 @@ namespace WindowsFormsApp1
             string user = txtLUser.Text;
             string pass = txtLPass.Text;
             string conexionABDD = $"Data Source=DESKTOP-PPMBHAK\\SQLEXPRESS;Initial Catalog=proyectoFinalTBDD;User ID={user};Password={pass};";
-
+            
 
 
 
@@ -54,8 +55,16 @@ namespace WindowsFormsApp1
 
                     Hide();
                     Principal p = new Principal();
+                    p.cUser = user;
+                    p.cPassword = pass;
+
+                //  MessageBox.Show($"{p.cUser} y {p.cPassword}");
+
+
                     p.ShowDialog(this);
                     Show();
+
+
                     this.Close();
 
                 }

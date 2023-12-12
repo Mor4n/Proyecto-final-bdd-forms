@@ -7,14 +7,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Runtime.ConstrainedExecution;
 
 namespace WindowsFormsApp1
 {
      class Conectarse
     {
-        public Conectarse(string con)
+        
+        public Conectarse(string user, string pass)
         {
-            using (SqlConnection conexion = new SqlConnection(con))
+
+
+
+            string conexionABDD = $"Data Source=DESKTOP-PPMBHAK\\SQLEXPRESS;Initial Catalog=proyectoFinalTBDD;User ID={user};Password={pass};";
+            using (SqlConnection conexion = new SqlConnection(conexionABDD))
             {
                 try
                 {
@@ -25,7 +31,7 @@ namespace WindowsFormsApp1
 
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error de inicio de sesión: "+ex.Message);
+                    MessageBox.Show("Error de inicio de sesión en conexion: "+ex.Message);
                 }
 
                 }
