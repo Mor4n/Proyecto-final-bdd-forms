@@ -587,6 +587,8 @@ namespace WindowsFormsApp1
         {
             ocultar();
             hacerVisible(4);
+            botonElegido = 4;
+
         }
 
 
@@ -728,6 +730,16 @@ namespace WindowsFormsApp1
         }
 
         private void rbModificar_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBackup_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRestaurar_Click(object sender, EventArgs e)
         {
 
         }

@@ -65,6 +65,8 @@
             this.rbEliminar = new System.Windows.Forms.RadioButton();
             this.lblIdJuego = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
+            this.btnBackup = new System.Windows.Forms.Button();
+            this.btnRestaurar = new System.Windows.Forms.Button();
             this.menu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -458,11 +460,33 @@
             this.txtId.TabIndex = 22;
             this.txtId.Visible = false;
             // 
+            // btnBackup
+            // 
+            this.btnBackup.Location = new System.Drawing.Point(338, 466);
+            this.btnBackup.Name = "btnBackup";
+            this.btnBackup.Size = new System.Drawing.Size(104, 34);
+            this.btnBackup.TabIndex = 23;
+            this.btnBackup.Text = "Respaldar BDD";
+            this.btnBackup.UseVisualStyleBackColor = true;
+            this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
+            // 
+            // btnRestaurar
+            // 
+            this.btnRestaurar.Location = new System.Drawing.Point(448, 466);
+            this.btnRestaurar.Name = "btnRestaurar";
+            this.btnRestaurar.Size = new System.Drawing.Size(104, 34);
+            this.btnRestaurar.TabIndex = 24;
+            this.btnRestaurar.Text = "Restaurar BDD";
+            this.btnRestaurar.UseVisualStyleBackColor = true;
+            this.btnRestaurar.Click += new System.EventHandler(this.btnRestaurar_Click);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 551);
+            this.Controls.Add(this.btnRestaurar);
+            this.Controls.Add(this.btnBackup);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.lblIdJuego);
             this.Controls.Add(this.lblAdPrecio);
@@ -536,6 +560,8 @@
         private System.Windows.Forms.Label lblAdPrecio;
         private System.Windows.Forms.Label lblIdJuego;
         private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.Button btnBackup;
+        private System.Windows.Forms.Button btnRestaurar;
     }
 }
 
