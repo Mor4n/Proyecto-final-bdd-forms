@@ -35,15 +35,15 @@
             this.bunifuColorTransition1 = new Bunifu.UI.WinForms.BunifuColorTransition(this.components);
             this.menu = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnTienda = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnTienda = new System.Windows.Forms.Button();
             this.btnLibreria = new System.Windows.Forms.Button();
             this.btnAdministrar = new System.Windows.Forms.Button();
             this.btnAuditoria = new System.Windows.Forms.Button();
-            this.timerMenu = new System.Windows.Forms.Timer(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnReporte = new System.Windows.Forms.Button();
+            this.timerMenu = new System.Windows.Forms.Timer(this.components);
             this.lblNombreJuego = new System.Windows.Forms.Label();
             this.pbImagenJuego = new System.Windows.Forms.PictureBox();
             this.lblPrecio = new System.Windows.Forms.Label();
@@ -56,24 +56,26 @@
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbEliminar = new System.Windows.Forms.RadioButton();
+            this.rbModificar = new System.Windows.Forms.RadioButton();
+            this.rbAdd = new System.Windows.Forms.RadioButton();
             this.lblAdNombre = new System.Windows.Forms.Label();
             this.lblAdPortada = new System.Windows.Forms.Label();
             this.lblAdDescripcion = new System.Windows.Forms.Label();
             this.lblAdPrecio = new System.Windows.Forms.Label();
-            this.rbAdd = new System.Windows.Forms.RadioButton();
-            this.rbModificar = new System.Windows.Forms.RadioButton();
-            this.rbEliminar = new System.Windows.Forms.RadioButton();
             this.lblIdJuego = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.btnBackup = new System.Windows.Forms.Button();
             this.btnRestaurar = new System.Windows.Forms.Button();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.menu.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenJuego)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataJuegos)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuDragControl1
@@ -132,6 +134,38 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(197, 100);
             this.panel1.TabIndex = 4;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F);
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(45, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 25);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Menú";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(9, 22);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(31, 28);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btnTienda);
+            this.panel2.Location = new System.Drawing.Point(3, 109);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(197, 57);
+            this.panel2.TabIndex = 5;
             // 
             // btnTienda
             // 
@@ -148,14 +182,6 @@
             this.btnTienda.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTienda.UseVisualStyleBackColor = true;
             this.btnTienda.Click += new System.EventHandler(this.btnTienda_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.btnTienda);
-            this.panel2.Location = new System.Drawing.Point(3, 109);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(197, 57);
-            this.panel2.TabIndex = 5;
             // 
             // btnLibreria
             // 
@@ -205,34 +231,6 @@
             this.btnAuditoria.UseVisualStyleBackColor = true;
             this.btnAuditoria.Click += new System.EventHandler(this.btnAuditoria_Click);
             // 
-            // timerMenu
-            // 
-            this.timerMenu.Interval = 10;
-            this.timerMenu.Tick += new System.EventHandler(this.timerMenu_Tick);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(9, 22);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(31, 28);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F);
-            this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(45, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 25);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Menú";
-            // 
             // btnReporte
             // 
             this.btnReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -248,6 +246,11 @@
             this.btnReporte.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReporte.UseVisualStyleBackColor = true;
             this.btnReporte.Click += new System.EventHandler(this.btnReporte_Click);
+            // 
+            // timerMenu
+            // 
+            this.timerMenu.Interval = 10;
+            this.timerMenu.Tick += new System.EventHandler(this.timerMenu_Tick);
             // 
             // lblNombreJuego
             // 
@@ -368,6 +371,40 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Visible = false;
             // 
+            // rbEliminar
+            // 
+            this.rbEliminar.AutoSize = true;
+            this.rbEliminar.Location = new System.Drawing.Point(17, 67);
+            this.rbEliminar.Name = "rbEliminar";
+            this.rbEliminar.Size = new System.Drawing.Size(61, 17);
+            this.rbEliminar.TabIndex = 2;
+            this.rbEliminar.TabStop = true;
+            this.rbEliminar.Text = "Eliminar";
+            this.rbEliminar.UseVisualStyleBackColor = true;
+            // 
+            // rbModificar
+            // 
+            this.rbModificar.AutoSize = true;
+            this.rbModificar.Location = new System.Drawing.Point(17, 44);
+            this.rbModificar.Name = "rbModificar";
+            this.rbModificar.Size = new System.Drawing.Size(68, 17);
+            this.rbModificar.TabIndex = 1;
+            this.rbModificar.TabStop = true;
+            this.rbModificar.Text = "Modificar";
+            this.rbModificar.UseVisualStyleBackColor = true;
+            this.rbModificar.CheckedChanged += new System.EventHandler(this.rbModificar_CheckedChanged);
+            // 
+            // rbAdd
+            // 
+            this.rbAdd.AutoSize = true;
+            this.rbAdd.Location = new System.Drawing.Point(17, 20);
+            this.rbAdd.Name = "rbAdd";
+            this.rbAdd.Size = new System.Drawing.Size(55, 17);
+            this.rbAdd.TabIndex = 0;
+            this.rbAdd.TabStop = true;
+            this.rbAdd.Text = "Añadir";
+            this.rbAdd.UseVisualStyleBackColor = true;
+            // 
             // lblAdNombre
             // 
             this.lblAdNombre.AutoSize = true;
@@ -408,40 +445,6 @@
             this.lblAdPrecio.Text = "Precio";
             this.lblAdPrecio.Visible = false;
             // 
-            // rbAdd
-            // 
-            this.rbAdd.AutoSize = true;
-            this.rbAdd.Location = new System.Drawing.Point(17, 20);
-            this.rbAdd.Name = "rbAdd";
-            this.rbAdd.Size = new System.Drawing.Size(55, 17);
-            this.rbAdd.TabIndex = 0;
-            this.rbAdd.TabStop = true;
-            this.rbAdd.Text = "Añadir";
-            this.rbAdd.UseVisualStyleBackColor = true;
-            // 
-            // rbModificar
-            // 
-            this.rbModificar.AutoSize = true;
-            this.rbModificar.Location = new System.Drawing.Point(17, 44);
-            this.rbModificar.Name = "rbModificar";
-            this.rbModificar.Size = new System.Drawing.Size(68, 17);
-            this.rbModificar.TabIndex = 1;
-            this.rbModificar.TabStop = true;
-            this.rbModificar.Text = "Modificar";
-            this.rbModificar.UseVisualStyleBackColor = true;
-            this.rbModificar.CheckedChanged += new System.EventHandler(this.rbModificar_CheckedChanged);
-            // 
-            // rbEliminar
-            // 
-            this.rbEliminar.AutoSize = true;
-            this.rbEliminar.Location = new System.Drawing.Point(17, 67);
-            this.rbEliminar.Name = "rbEliminar";
-            this.rbEliminar.Size = new System.Drawing.Size(61, 17);
-            this.rbEliminar.TabIndex = 2;
-            this.rbEliminar.TabStop = true;
-            this.rbEliminar.Text = "Eliminar";
-            this.rbEliminar.UseVisualStyleBackColor = true;
-            // 
             // lblIdJuego
             // 
             this.lblIdJuego.AutoSize = true;
@@ -468,6 +471,7 @@
             this.btnBackup.TabIndex = 23;
             this.btnBackup.Text = "Respaldar BDD";
             this.btnBackup.UseVisualStyleBackColor = true;
+            this.btnBackup.Visible = false;
             this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
             // 
             // btnRestaurar
@@ -478,7 +482,12 @@
             this.btnRestaurar.TabIndex = 24;
             this.btnRestaurar.Text = "Restaurar BDD";
             this.btnRestaurar.UseVisualStyleBackColor = true;
+            this.btnRestaurar.Visible = false;
             this.btnRestaurar.Click += new System.EventHandler(this.btnRestaurar_Click);
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.CurrentChanged += new System.EventHandler(this.bindingSource1_CurrentChanged);
             // 
             // Principal
             // 
@@ -513,12 +522,13 @@
             this.menu.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenJuego)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataJuegos)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -562,6 +572,8 @@
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Button btnBackup;
         private System.Windows.Forms.Button btnRestaurar;
+    //    private ProyectoFinalTBDDDataSet proyectoFinalTBDDDataSet1;
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }
 

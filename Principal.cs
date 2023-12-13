@@ -10,6 +10,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Services.Description;
 using System.Windows.Forms;
+using Microsoft.SqlServer.Types;
+using Microsoft.Reporting;
+using Microsoft.Reporting;
 
 namespace WindowsFormsApp1
 {
@@ -74,7 +77,7 @@ namespace WindowsFormsApp1
                 }
                 conexion.Close();
 
-
+                //SqlServerTypes.Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
 
 
 
@@ -82,6 +85,8 @@ namespace WindowsFormsApp1
 
 
             }
+
+
         }
 
         private void timerMenu_Tick(object sender, EventArgs e)
@@ -164,7 +169,8 @@ namespace WindowsFormsApp1
                     groupBox1.Visible = true;
                     lblIdJuego.Visible = true;
                     txtId.Visible = true;
-
+                    btnRestaurar.Visible = true;
+                    btnBackup.Visible = true;
 
 
 
@@ -176,6 +182,7 @@ namespace WindowsFormsApp1
                     dataJuegos.Size = new Size(707, 445);
                     break;
                 case 4:
+                 //   rvReporte.Visible = true;
                     break;
 
             }
@@ -204,7 +211,11 @@ namespace WindowsFormsApp1
             groupBox1.Visible = false;
             lblIdJuego.Visible = false;
             txtId.Visible= false;
+            btnRestaurar.Visible = false;
+            btnBackup.Visible = false;
 
+            //Reporte
+         //   rvReporte.Visible = false;
 
         }
         int botonElegido;
@@ -233,7 +244,7 @@ namespace WindowsFormsApp1
 
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error de inicio de sesión: " + ex.Message);
+//                    MessageBox.Show("Error de inicio de sesión: " + ex.Message);
                 }
 
             }
@@ -362,7 +373,6 @@ namespace WindowsFormsApp1
                             if (opcion == DialogResult.Yes)
                             {
 
-                                procedimientosAlmacenadosJuegos();
                                 procedimientosAlmacenadosTienda();
                                 //Crear procedimiento para insert para el juego añadido a su biblioteca
                                 //Crear procedimiento update para el dinero retirado de su cuenta
@@ -371,10 +381,14 @@ namespace WindowsFormsApp1
 
 
                                 string[] compra = new string[2];
+                                DateTime fechaActual = DateTime.Now;
+                                string fechaFormateada = fechaActual.ToString("yyyyMMdd");
 
+                                MessageBox.Show(fechaFormateada.ToString());
                                 compra[0] = "exec proyecto.proce_CompraJuego " +
                                     $"@IdUsuario ={iduser}," +
-                                    $"@idjuego={idjuego}";
+                                    $"@idjuego={idjuego}," +
+                                    $"@fechacompra = '{fechaFormateada}'";
                                 compra[1] = "exec proyecto.proce_RestarDinero " +
                                     $"@IdUsuario ={iduser}," +
                                     $"@Dinero={resta}";
@@ -520,7 +534,8 @@ namespace WindowsFormsApp1
         {
             ocultar();
             hacerVisible(2);
-            
+
+            procedimientosAlmacenadosJuegos();
 
             botonElegido = 2;
             using (SqlConnection conexion = new SqlConnection(conexionABDD))
@@ -585,10 +600,17 @@ namespace WindowsFormsApp1
 
         private void btnReporte_Click(object sender, EventArgs e)
         {
-            ocultar();
-            hacerVisible(4);
-            botonElegido = 4;
+            try
+            {
 
+                ocultar();
+                hacerVisible(4);
+                botonElegido = 4;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
 
@@ -600,15 +622,19 @@ namespace WindowsFormsApp1
                 "EXEC('" +
                 "CREATE PROCEDURE proyecto.proce_CompraJuego(" +
                 "@IdUsuario INT," +
-                "@IdJuego INT)  " +
+                "@IdJuego INT," +
+                "@FechaCompra DATE)  " +
                 "AS  " +
                 "BEGIN         " +
                 "INSERT INTO proyecto.Libreria  (" +
                 "IdUsuario," +
-                "IdJuego) " +
+                "IdJuego," +
+                "FechaCompra) " +
                 "VALUES ( " +
                 "@IdUsuario," +
-                "@IdJuego)" +
+                "@IdJuego," +
+                "@FechaCompra" +
+                ")" +
                 "END')" +
                 "END;";
 
@@ -736,10 +762,46 @@ namespace WindowsFormsApp1
 
         private void btnBackup_Click(object sender, EventArgs e)
         {
+            //exec  proyecto.proceBackup
+            SqlConnection conexion = new SqlConnection(conexionABDD);
 
+            conexion.Open();
+            string consulta = $"exec proyecto.proceBackup";
+            using (SqlCommand command = new SqlCommand(consulta, conexion))
+            {
+                 command.ExecuteNonQuery();
+                
+            }
+            MessageBox.Show("Se ha guardado la base de datos actual");
+            conexion.Close();
         }
 
         private void btnRestaurar_Click(object sender, EventArgs e)
+        {
+            SqlConnection conexion = new SqlConnection(c);
+
+            conexion.Open();
+            string consulta = $"use master " +
+                $"Alter Database proyectofinaltbdd SET SINGLE_USER With ROLLBACK IMMEDIATE " +
+                $"exec proceRestaurar " +
+                $"ALTER DATABASE proyectofinaltbdd SET Multi_User " +
+                $"use proyectofinaltbdd ";
+
+
+            using (SqlCommand command = new SqlCommand(consulta, conexion))
+            {
+                command.ExecuteNonQuery();
+            }
+            MessageBox.Show("Se ha restaurado la base de datos a una versión anterior");
+            conexion.Close();
+        }
+
+        private void bindingSource1_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

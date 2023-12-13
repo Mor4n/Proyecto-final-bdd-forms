@@ -71,7 +71,7 @@ namespace WindowsFormsApp1
 
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error de inicio de sesión: " + ex.Message);
+                  //  MessageBox.Show("Error de inicio de sesión: " + ex.Message);
                 }
 
             }
@@ -134,7 +134,8 @@ namespace WindowsFormsApp1
                     "IdUsuario int not null," +
                     "constraint IdUsuario FOREIGN KEY (IdUsuario) REFERENCES proyecto.Usuario (IdUsuario)," +
                     "IdJuego INT NOT NULL," +
-                    "constraint IdJuego FOREIGN KEY (IdJuego) REFERENCES proyecto.Tienda (IdJuego)" +
+                    "constraint IdJuego FOREIGN KEY (IdJuego) REFERENCES proyecto.Tienda (IdJuego)," +
+                    "FechaCompra DATE" +
                     ")";
                 consultas[6] = "IF OBJECT_ID('proyecto.Auditoria','U') IS NULL " +
                     "CREATE TABLE proyecto.Auditoria(" +
@@ -177,7 +178,7 @@ namespace WindowsFormsApp1
 
         public static void insertarDatosIniciales(string con)
         {
-            string[] consultas = new string[6];
+            string[] consultas = new string[10];
             consultas[0] = "use ProyectoFinalTBDD";
             //Crear procedimientoBaseTienda
             consultas[1] = "IF NOT EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND OBJECT_ID = OBJECT_ID('proyecto.proce_BaseTienda'))" +
@@ -247,7 +248,50 @@ namespace WindowsFormsApp1
              " @Nombre = 'Kirby and the forgotten land', " +
              "@Precio = 1000, " +
              "@Descripcion = 'Únete a Kirby en una travesía inolvidable a través de un misterioso mundo en esta encantadora aventura de plataformas en 3D. Toma control de la bola rosada conocida como Kirby y muévete con libertad en escenarios en 3D mientras descubres un misterioso mundo con estructuras abandonadas de una civilización pasada… ¡¿como un centro comercial? Copia las habilidades de los enemigos, tales como Espada y Hielo, y úsalas para atacar y explorar tus alrededores. ¿Qué le espera a Kirby en su travesía? ¡Respira profundamente y prepárate para una aventura inolvidable.';";
+            consultas[6] = "IF NOT EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND OBJECT_ID = OBJECT_ID('proyecto.proce_crearUser'))" +
+                "BEGIN " +
+                "EXEC('" +
+                "CREATE PROCEDURE proyecto.proce_crearUser(" +
+                "@Nombre_Usuario VARCHAR(50),         " +
+                "@Email_Usuario VARCHAR(50),         " +
+                "@Dinero MONEY,        " +
+                "@Rol char(1)) " +
+                "AS  " +
+                "BEGIN         " +
+                "INSERT INTO proyecto.Usuario  (" +
+                "Nombre_Usuario," +
+                "Email_Usuario," +
+                "Dinero, " +
+                "Rol) " +
+                "VALUES ( " +
+                "@Nombre_Usuario, " +
+                "@Email_usuario," +
+                "@Dinero, " +
+                "@Rol)" +
+                "END')" +
+                "END;";
 
+
+            string ruta = "C:\\Datos\\Backup.BAK";
+            
+            consultas[7] = "IF NOT EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND OBJECT_ID = OBJECT_ID('proyecto.proce_Ventas'))" +
+                "BEGIN " +
+                "EXEC(' create procedure proyecto.proce_Ventas AS  " +
+                "select COUNT (proyecto.Libreria.IdLibreria) Cantidad, MONTH(proyecto.Libreria.FechaCompra) Mes from proyecto.Libreria group by month(proyecto.Libreria.FechaCompra)')" +
+                "END;";
+
+            consultas[8] = "IF NOT EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND OBJECT_ID = OBJECT_ID('proyecto.proceBackup'))" +
+                "BEGIN " +
+                "EXEC('" +
+                $"create procedure proyecto.proceBackup AS BEGIN BACKUP DATABASE proyectoFinalTBDD TO DISK = ''{ruta}'';" +
+                "END') " +
+                "END;";
+            consultas[9] = " IF NOT EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND OBJECT_ID = OBJECT_ID('proceRestaurar'))" +
+                "BEGIN " +
+                "EXEC('" +
+                "CREATE PROCEDURE proceRestaurar as  BEGIN " +
+                $"RESTORE DATABASE proyectoFinalTBDD FROM DISK = ''{ruta}'' WITH REPLACE END') " + 
+                "END;";
             using (SqlConnection conexion = new SqlConnection(con))
             {
                 try
@@ -258,7 +302,7 @@ namespace WindowsFormsApp1
                         using (SqlCommand command = new SqlCommand(consultas[i], conexion))
                         {
                             // Ejecutar la consulta
-                            command.ExecuteNonQuery();
+                            command.ExecuteScalar();
                             //   MessageBox.Show($"Creado exitosamente los datos de las tablas{i}");
                         }
                     }
@@ -267,7 +311,7 @@ namespace WindowsFormsApp1
                 }
                 catch (Exception ex)
                 {
-                  //  MessageBox.Show("Error: " + ex.Message);
+                  // MessageBox.Show("Error: " + ex.Message);
                 }
 
                 conexion.Close();
@@ -368,6 +412,11 @@ namespace WindowsFormsApp1
         {
             pictureBox1.BringToFront();
             txtLPass.PasswordChar = '*';
+        }
+
+        private void bunifuGradientPanel1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
