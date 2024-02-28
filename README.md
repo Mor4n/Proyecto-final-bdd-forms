@@ -5,7 +5,7 @@
 <img src="foto0.jpg" alt="Foto 0" title="Foto 0">
 <img src="foto00.jpg" alt="Foto 0" title="Foto 0">
 <img src="foto000.jpg" alt="Foto 0" title="Foto 0">
-<img src="foto1.jpg" alt="Foto 0" title="Foto 0">
+<img src="imagenes/foto1.jpg" alt="Foto 0" title="Foto 0">
 <img src="foto2.jpg" alt="Foto 0" title="Foto 0">
 <img src="foto3.jpg" alt="Foto 0" title="Foto 0">
 <img src="foto4.jpg" alt="Foto 0" title="Foto 0">
